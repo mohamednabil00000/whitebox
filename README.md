@@ -1,24 +1,60 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It is a sample application for creating projects and tasks and assign tasks for specific users.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+* Rails 7
+* Ruby 3.2
+* Dockerfile and Docker Compose configuration
+* Heroku configration using foreman
+* PostgreSQL database
+* GitHub Actions for
+  * tests
+  * Rubocop for linting
 
-* System dependencies
+## Requirements
 
-* Configuration
+Please ensure you have docker & docker-compose
 
-* Database creation
+https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-install-Docker-and-docker-compose-on-Ubuntu
 
-* Database initialization
+https://dockerlabs.collabnix.com/intermediate/workshop/DockerCompose/How_to_Install_Docker_Compose.html
 
-* How to run the test suite
+Check your docker compose version with:
+```
+% docker compose version
+Docker Compose version v2.10.2
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Initial setup
+```
+cp .env.example .env
+cd docker
+$ docker-compose build
+```
 
-* Deployment instructions
+## Running the Rails app
+```
+$ docker-compose up
+```
 
-* ...
+## Running the Rails console
+When the app is already running with `docker-compose` up, attach to the container:
+```
+$docker-compose exec app bin/rails c
+```
+When no container running yet, start up a new one:
+```
+$ docker-compose run --rm app bin/rails c
+```
+## Running tests
+```
+$ docker-compose run --rm app bin/rspec
+```
+## Author
+
+**Mohamed Nabil**
+
+- <https://www.linkedin.com/in/mohamed-nabil-a184125b>
+- <https://leetcode.com/mohamednabil00000/>
