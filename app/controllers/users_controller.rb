@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
 	skip_before_action :authenticate_request, only: [:create]
 	before_action :set_user, only: [:show, :destroy, :update]
@@ -10,6 +12,8 @@ class UsersController < ApplicationController
 
 	# GET /users/{id}
 	def show
+		return head :not_found unless @user
+
 		render json: @user, status: :ok
 	end
 
@@ -43,6 +47,6 @@ class UsersController < ApplicationController
 		end
 
 		def set_user
-			@user = User.find(params[:id])
+			@user = User.find_by(id: params[:id])
 		end
 end
