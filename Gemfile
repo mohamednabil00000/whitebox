@@ -7,6 +7,10 @@ ruby "3.2.0"
 gem "rails", "~> 7.0.2"
 gem "bundler", "~> 2.4.5"
 
+gem 'devise'
+gem 'jwt'
+gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
