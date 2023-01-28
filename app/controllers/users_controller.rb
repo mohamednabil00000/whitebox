@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 	def show
 		return head :not_found unless @user
 
-		render json: @user, status: :ok
+		render json: UserPresenter.new(user: @user).present, status: :ok
 	end
 
 	#PUT /users/{id}
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			render json: @user, status: :created
+			render json: UserPresenter.new(user: @user).present, status: :created
 		else
 			render json: { errors: @user.errors.full_messages },
 				   status: :unprocessable_entity

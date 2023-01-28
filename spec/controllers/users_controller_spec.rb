@@ -14,9 +14,7 @@ describe UsersController, type: :controller do
 				user = User.last
 				expected_response = {
 					'email' => user.email,
-					'id' => user.id,
-					'created_at' => user.created_at.as_json,
-					'updated_at' => user.updated_at.as_json
+					'id' => user.id
 				}
 				expect(JSON.parse(response.body)).to eq expected_response
 			end
@@ -45,9 +43,7 @@ describe UsersController, type: :controller do
 				expect(response.status).to eq 200
 				expected_response = {
 					'email' => auth_user.email,
-					'id' => auth_user.id,
-					'created_at' => auth_user.created_at.as_json,
-					'updated_at' => auth_user.updated_at.as_json
+					'id' => auth_user.id
 				}
 				expect(JSON.parse(response.body)).to eq expected_response
 			end
