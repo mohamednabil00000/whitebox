@@ -51,9 +51,9 @@ jobs:
           ruby-version: '3.2.0' # Not needed with a .ruby-version file
           bundler-cache: true # runs 'bundle install' and caches installed gems automaticall
       # Add or replace any other lints here
-      - name: Security audit dependencies
-        run: bundle exec bundler-audit
-      - name: Security audit application code
-        run: bin/brakeman -q -w2
-      - name: Lint Ruby files
-        run: bin/rubocop --parallel
+      - name: Run linters
+        run: bundle exec rubocop --parallel
+      - name: Ruby security checks
+        run: |
+          bundle exec bundler-audit --update
+          bundle exec brakeman -q -w2

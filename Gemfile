@@ -14,6 +14,9 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 # bundler-audit provides patch-level verification for Bundled apps.
 gem 'bundler-audit'
 
+# Brakeman detects security vulnerabilities in Ruby on Rails applications via static analysis.
+gem 'brakeman', '~> 3.3', '>= 3.3.2'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
