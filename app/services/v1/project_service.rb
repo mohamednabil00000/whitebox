@@ -3,6 +3,8 @@
 class V1::ProjectService
 
 	def create(project_params)
+		#TODO we need to check for users before saving them
+
 		project = Project.new(project_params)
 		if project.save
 			ResultSuccess.new(project: project_presenter.present(project: project))
@@ -12,19 +14,17 @@ class V1::ProjectService
 	end
 
 	def get(id)
-		@project = Project.find_by(id: id)
-		return ResultError.new unless @project
+		project = Project.find_by(id: id)
+		return ResultError.new(errors: ['Project is not found']) unless project
 
-		ResultSuccess.new(project: project_presenter.present(project: @project))
+		ResultSuccess.new(project: project_presenter.present(project: project))
 	end
 
 	def add_user_to_project(project_id:, user_id:)
 		projects_user = ProjectsUser.new(project_id: project_id, user_id: user_id)
-		if projects_user.save
-			ResultSuccess.new
-		else
-			ResultError.new(errors: projects_user.errors.full_messages)
-		end
+		return ResultSuccess.new if projects_user.save
+
+		ResultError.new(errors: projects_user.errors.full_messages)
 	end
 
 	def remove_user_from_project(project_id:, user_id:)

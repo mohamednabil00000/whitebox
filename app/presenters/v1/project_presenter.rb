@@ -13,6 +13,14 @@ class V1::ProjectPresenter
     }
   end
 
+  def present_summary(project:)
+    {
+      id: project.id,
+      name: project.name,
+      description: project.description
+    }
+  end
+
   def present_arr(projects:)
     projects.map do |project|
       present(project: project)
