@@ -12,6 +12,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
+  validates :email, uniqueness: true, length: { maximum: 255 }
+
   def self.find_authenticated(args = {})
     user = find_by(email: args[:email])
     if user && user&.valid_password?(args[:password])

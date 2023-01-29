@@ -9,6 +9,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:tasks) }
   end
 
+  describe 'validations' do
+    it { is_expected.to validate_presence_of :email }
+    it { is_expected.to validate_length_of(:email).is_at_most(255) }
+  end
 	describe '.find_authenticated' do
 		context 'return success' do
 			let!(:user) { create :user, email: 'test@test.com', password: '123456' }
