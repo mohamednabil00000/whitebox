@@ -17,6 +17,8 @@ It is a sample application for creating projects and tasks and assign tasks for 
   * Rubocop for linting(upcoming)
 * I18n(upcoming)
 * Logger(upcoming)
+* Swagger(upcoming)
+
 
 ## Requirements
 
@@ -29,25 +31,24 @@ https://dockerlabs.collabnix.com/intermediate/workshop/DockerCompose/How_to_Inst
 Check your docker compose version with:
 ```
 % docker compose version
-Docker Compose version v2.10.2
+Docker Compose version v1.27.4
 ```
 
 ## Initial setup
 ```
-cp .env.example .env
-cd docker
+$ cp .env.example .env
+$ cd docker
 $ docker-compose build
 ```
 
 ## Running the Rails app
 ```
-$ docker-compose up
+$ docker-compose --env-file ../.env up
 ```
-
 ## Running the Rails console
 When the app is already running with `docker-compose` up, attach to the container:
 ```
-$docker-compose exec app bin/rails c
+$ docker-compose exec app bin/rails c
 ```
 When no container running yet, start up a new one:
 ```
