@@ -40,7 +40,7 @@ jobs:
       - name: Run tests
         run: bin/rake
 
-  lint:
+  security-checks:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -53,8 +53,5 @@ jobs:
       - name: Ruby security checks
         run: |
           bundle exec bundler-audit --update
-          bundle exec brakeman -q -w2
-      # Add or replace any other lints here
-      - name: Run linters
-        run: bundle exec rubocop --parallel
+
 

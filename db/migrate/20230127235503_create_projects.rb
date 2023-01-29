@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class CreateProjects < ActiveRecord::Migration[7.0]
   def change
-    create_table :projects, force: :cascade  do |t|
-      t.string :name, null:false, unique: true
-      t.integer :leader_id, null:false
-      t.integer :created_by_id, null:false
+    create_table :projects, force: :cascade do |t|
+      t.string :name, null: false, unique: true
+      t.integer :leader_id, null: false
+      t.integer :created_by_id, null: false
       t.text :description
 
       t.timestamps

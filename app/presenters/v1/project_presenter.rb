@@ -1,27 +1,28 @@
 # frozen_string_literal: true
 
-class V1::ProjectPresenter
-
-  def present(project:)
-    {
-      id: project.id,
-      name: project.name,
-      description: project.description,
-      leader: user_presenter.present(user: project.leader),
-      created_by: user_presenter.present(user: project.created_by),
-      users_in_project: user_presenter.present_arr(users: project.users)
-    }
-  end
-
-  def present_arr(projects:)
-    projects.map do |project|
-      present(project: project)
+module V1
+  class ProjectPresenter
+    def present(project:)
+      {
+        id: project.id,
+        name: project.name,
+        description: project.description,
+        leader: user_presenter.present(user: project.leader),
+        created_by: user_presenter.present(user: project.created_by),
+        users_in_project: user_presenter.present_arr(users: project.users)
+      }
     end
-  end
 
-  private
+    def present_arr(projects:)
+      projects.map do |project|
+        present(project: project)
+      end
+    end
 
-  def user_presenter
-    @user_presenter ||= V1::UserPresenter.new
+    private
+
+    def user_presenter
+      @user_presenter ||= V1::UserPresenter.new
+    end
   end
 end
