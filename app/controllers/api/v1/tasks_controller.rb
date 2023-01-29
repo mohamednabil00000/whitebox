@@ -33,9 +33,9 @@ class Api::V1::TasksController < Api::V1::BaseController
 		end
 	end
 
-	#DELETE /tasks/:task_id/users/:user_id
+	#DELETE /tasks/:task_id/remove_assign
 	def remove_assigning_user
-		result = task_service.remove_assigning_user(task_id: params[:task_id], user_id: params[:user_id])
+		result = task_service.remove_assigning_user(task_id: params[:task_id])
 		if result.successful?
 			head :no_content
 		else
