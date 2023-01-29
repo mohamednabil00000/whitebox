@@ -58,6 +58,13 @@ $ docker-compose run --rm app bin/rails c
 ```
 $ docker-compose run --rm app bin/rspec
 ```
+
+## Postman script
+```
+There is a postman script that contains the whole scenario.
+you can find it in postman folder.
+```
+
 ## Author
 
 **Mohamed Nabil**
