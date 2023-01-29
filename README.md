@@ -9,6 +9,7 @@ It is a sample application for creating projects and tasks and assign tasks for 
 * Dockerfile and Docker Compose configuration
 * Heroku configration using foreman
 * PostgreSQL database
+* Devise auth & jwt token based
 * GitHub Actions for
   * tests
   * Rubocop for linting

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :projects, only: %i[create show]
+      post 'projects/:project_id/users/:user_id', to: 'projects#add_user'
     end
   end
 end

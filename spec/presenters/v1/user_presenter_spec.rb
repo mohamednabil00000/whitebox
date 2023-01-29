@@ -1,9 +1,7 @@
 require 'spec_helper'
 
-describe UserPresenter do
+describe V1::UserPresenter do
 	let(:user) { create :user }
-
-	let(:subject) { described_class.new(user: user) }
 
 	describe '#present' do
 		it 'return expected user object' do
@@ -11,7 +9,12 @@ describe UserPresenter do
 				email: user.email,
 				id: user.id
 			}
-			expect(subject.present).to eq expected_json
+			expect(described_class.new.present(user: user)).to eq expected_json
 		end
+	end
+
+
+	#TO-DO
+	describe '#present_arr' do
 	end
 end
