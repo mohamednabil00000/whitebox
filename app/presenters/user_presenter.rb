@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class V1::UserPresenter
+class UserPresenter
   def present(user:)
     {
       id: user.id,

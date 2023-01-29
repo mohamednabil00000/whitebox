@@ -22,6 +22,6 @@ class V1::ProjectPresenter
   private
 
   def user_presenter
-    @user_presenter ||= V1::UserPresenter.new
+    @user_presenter ||= UserPresenter.new
   end
 end
