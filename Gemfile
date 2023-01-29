@@ -11,6 +11,9 @@ gem 'devise'
 gem 'jwt'
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 
+# bundler-audit provides patch-level verification for Bundled apps.
+gem 'bundler-audit'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
