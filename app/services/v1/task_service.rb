@@ -4,7 +4,7 @@ class V1::TaskService
 
 	def create(task_params)
 		unless is_user_in_project?(user_id: task_params[:assignee_id], project_id: task_params[:project_id])
-			return ResultError.new(errors: ['User does not exist in the project that contains this task!'])
+			return ResultError.new(errors: [ I18n.t('errors.messages.user_does_not_exist_in_project') ])
 		end
 
 		task = Task.new(task_params)
@@ -25,10 +25,10 @@ class V1::TaskService
 
 	def assign_user(task_id:, user_id:)
 		task = Task.find_by(id: task_id)
-		return ResultError.new(errors: ['Task is not found']) unless task
+		return ResultError.new(errors: [I18n.t('errors.messages.is_not_found', model: 'Task')]) unless task
 
 		unless is_user_in_project?(user_id: user_id, project_id: task.project_id)
-			return ResultError.new(errors: ['User does not exist in the project that contains this task!'])
+			return ResultError.new(errors: [ I18n.t('errors.messages.user_does_not_exist_in_project') ])
 		end
 
 		task.assignee_id = user_id
@@ -39,7 +39,7 @@ class V1::TaskService
 
 	def remove_assigning_user(task_id:)
 		task = Task.find_by(id: task_id)
-		return ResultError.new(errors: 'Task is not found') unless task
+		return ResultError.new(errors: [I18n.t('errors.messages.is_not_found', model: 'Task')]) unless task
 
 		task.update!(assignee_id: nil) if task.assignee_id
 		ResultSuccess.new

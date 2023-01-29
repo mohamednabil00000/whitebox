@@ -15,7 +15,7 @@ class V1::ProjectService
 
 	def get(id)
 		project = Project.find_by(id: id)
-		return ResultError.new(errors: ['Project is not found']) unless project
+		return ResultError.new(errors: [ I18n.t('errors.messages.is_not_found', model: 'Project') ]) unless project
 
 		ResultSuccess.new(project: project_presenter.present(project: project))
 	end
