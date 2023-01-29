@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :projects, only: %i[create show]
       post 'projects/:project_id/users/:user_id', to: 'projects#add_user'
+      delete 'projects/:project_id/users/:user_id', to: 'projects#remove_user'
     end
   end
 end

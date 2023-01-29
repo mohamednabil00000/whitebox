@@ -10,9 +10,12 @@ It is a sample application for creating projects and tasks and assign tasks for 
 * Heroku configration using foreman
 * PostgreSQL database
 * Devise auth & jwt token based
+* Rspec & Factorybot
 * GitHub Actions for
   * tests
-  * Rubocop for linting
+  * security checks
+  * Rubocop for linting(upcoming)
+* I18n(upcoming)
 
 ## Requirements
 

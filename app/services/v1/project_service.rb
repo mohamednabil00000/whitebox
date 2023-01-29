@@ -19,16 +19,17 @@ class V1::ProjectService
 	end
 
 	def add_user_to_project(project_id:, user_id:)
-		project = Project.find_by(id: project_id)
-		return ResultError.new(errors: 'Project is not found!') unless project
+		projects_user = ProjectsUser.new(project_id: project_id, user_id: user_id)
+		if projects_user.save
+			ResultSuccess.new
+		else
+			ResultError.new(errors: projects_user.errors.full_messages)
+		end
+	end
 
-		user = User.find_by(id: user_id)
-		return ResultError.new(errors: 'User is not found!') unless user
-
-		project.users << user
-		ResultSuccess.new
-	rescue ActiveRecord::RecordNotUnique
-		ResultError.new(errors: 'This user exists before in this project')
+	def remove_user_from_project(project_id:, user_id:)
+		projects_user = ProjectsUser.find_by(project_id: project_id, user_id: user_id)
+		projects_user.destroy if projects_user
 	end
 
 	private

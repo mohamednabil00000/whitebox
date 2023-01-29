@@ -33,6 +33,12 @@ class Api::V1::ProjectsController < Api::V1::BaseController
 		end
 	end
 
+	#DELETE /projects/:project_id/users/:user_id
+	def remove_user
+		project_service.remove_user_from_project(project_id: params[:project_id], user_id: params[:user_id])
+		head :no_content
+	end
+
   private
 		def project_params
 			params.fetch(:project, {})

@@ -82,11 +82,41 @@ describe Api::V1::ProjectsController, type: :controller do
 		end
 	end
 
-	#TO-DO
 	describe '#add_user' do
+		#TO-DO
+		it 'expect project has 2 users after adding a new one' do
+		end
+
+		#TO-DO
+		it 'expect error when adding user does not exist' do
+		end
+
+		#TO-DO
+		it 'expect error when adding project does not exist' do
+		end
 	end
 
-	#TO-DO
+	describe '#remove_user' do
+		#TO-DO
+		it 'expect project has no users after removing the only one existed' do
+		end
+
+		#TO-DO
+		it 'expect 204 when removing user does not exist from existed project' do
+		end
+
+		#TO-DO
+		it 'expect 204 when removing user from un-existed project' do
+		end
+	end
+
 	describe '#show' do
+		#TO-DO
+		it 'should return project object' do
+		end
+
+		#TO-DO
+		it 'return 404 when project id does not exist' do
+		end
 	end
 end
