@@ -24,10 +24,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_28_160018) do
     t.index ["name"], name: "index_projects_on_name", unique: true
   end
 
-  create_table "projects_users", id: false, force: :cascade do |t|
+  create_table "projects_users", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "user_id"
-    t.index ["project_id", "user_id"], name: "index_projects_users_on_project_id_and_user_id", unique: true
     t.index ["project_id"], name: "index_projects_users_on_project_id"
     t.index ["user_id"], name: "index_projects_users_on_user_id"
   end

@@ -3,7 +3,8 @@
 class User < ApplicationRecord
   require "securerandom"
 
-  has_and_belongs_to_many :projects
+  has_many :projects_users, dependent: :delete_all
+  has_many :projects, through: :projects_users
   has_many :tasks, foreign_key: :assignee_id
 
   # Include default devise modules. Others available are:

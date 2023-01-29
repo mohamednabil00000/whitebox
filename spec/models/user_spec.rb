@@ -5,7 +5,8 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   describe 'associations' do
-    it { is_expected.to have_and_belong_to_many(:projects) }
+    it { is_expected.to have_many(:projects).through(:projects_users) }
+  	it { is_expected.to have_many(:projects_users).dependent(:delete_all) }
     it { is_expected.to have_many(:tasks) }
   end
 
@@ -13,6 +14,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_length_of(:email).is_at_most(255) }
   end
+
 	describe '.find_authenticated' do
 		context 'return success' do
 			let!(:user) { create :user, email: 'test@test.com', password: '123456' }
