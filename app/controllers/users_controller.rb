@@ -6,33 +6,34 @@ class UsersController < ApplicationController
 
 	# GET /users
 	def index
-		@users = User.all
-		render json: @users, status: :ok
+		render json: User.all.select(:id, :email), status: :ok
 	end
 
 	# GET /users/{id}
 	def show
-		return head :not_found unless @user
+		result = user_service.show(user: @user)
+		return head :not_found unless result.successful?
 
-		render json: user_presenter.present(user: @user), status: :ok
+		render json: result.attributes[:user], status: :ok
 	end
 
 	#PUT /users/{id}
 	def update
-		unless @user.update(user_params)
-			render json: { errors: @user.errors.full_messages },
-				   status: :unprocessable_entity
+		result = user_service.update(user: @user, user_params: user_params)
+		if result.successful?
+			head :no_content
+		else
+			render json: result.attributes, status: :unprocessable_entity
 		end
 	end
 
 	#POST /users
 	def create
-		@user = User.new(user_params)
-		if @user.save
-			render json: user_presenter.present(user: @user), status: :created
+		result = user_service.create(user_params)
+		if result.successful?
+			render json: result.attributes[:user], status: :created
 		else
-			render json: { errors: @user.errors.full_messages },
-				   status: :unprocessable_entity
+			render json: result.attributes, status: :unprocessable_entity
 		end
 	end
 
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
 			@user = User.find_by(id: params[:id])
 		end
 
-		def user_presenter
-			@user_presenter ||= V1::UserPresenter.new
+		def user_service
+			@user_service ||= UserService.new
 		end
 end
