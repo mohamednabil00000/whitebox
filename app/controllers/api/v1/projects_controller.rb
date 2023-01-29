@@ -19,7 +19,7 @@ class Api::V1::ProjectsController < Api::V1::BaseController
 			render json: result.attributes[:project], status: :ok
 		else
 			# later we can introduce I18n
-			render json: { error: 'Project is not found!' }, status: :not_found
+			render json: result.attributes[:errors], status: :not_found
 		end
 	end
 
@@ -29,7 +29,7 @@ class Api::V1::ProjectsController < Api::V1::BaseController
 		if result.successful?
 			head :no_content
 		else
-			render json: result.attributes, status: :bad_request
+			render json: result.attributes[:errors], status: :bad_request
 		end
 	end
 
