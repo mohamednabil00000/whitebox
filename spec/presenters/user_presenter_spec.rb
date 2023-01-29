@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe V1::UserPresenter do
+describe UserPresenter do
 	let(:user) { create :user }
 
 	describe '#present' do
