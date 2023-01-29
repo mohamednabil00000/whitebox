@@ -37,7 +37,7 @@ class V1::TaskService
 		ResultError.new(errors: task.errors.full_messages)
 	end
 
-	def remove_assigning_user(task_id:, user_id:)
+	def remove_assigning_user(task_id:)
 		task = Task.find_by(id: task_id)
 		return ResultError.new(errors: 'Task is not found') unless task
 
