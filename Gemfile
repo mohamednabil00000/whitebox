@@ -7,6 +7,13 @@ ruby "3.2.0"
 gem "rails", "~> 7.0.2"
 gem "bundler", "~> 2.4.5"
 
+gem 'devise'
+gem 'jwt'
+gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+
+# bundler-audit provides patch-level verification for Bundled apps.
+gem 'bundler-audit'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -56,6 +63,9 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'dotenv-rails'
+  gem "rspec-rails"
+  gem 'factory_bot_rails', '~> 6.2'
+  gem "faker"
 end
 
 group :development do
@@ -74,4 +84,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'shoulda-matchers'
 end
