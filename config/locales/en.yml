@@ -30,4 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  errors:
+    messages:
+      is_not_found: "%{model} is not found"
+      user_does_not_exist_in_project: 'User does not exist in the project that contains this task!'
+      unauthorized: 'unauthorized'
+
