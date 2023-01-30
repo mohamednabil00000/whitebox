@@ -15,7 +15,7 @@ It is a sample application for creating projects and tasks and assign tasks for 
   * tests
   * security checks
   * Rubocop for linting(upcoming)
-* I18n(upcoming)
+* I18n
 * Logger(upcoming)
 * Swagger(upcoming)
 
